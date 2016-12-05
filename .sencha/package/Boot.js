@@ -590,8 +590,12 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 }
 
                 if (!baseUrl) {
-                    script = scriptEls[scriptEls.length - 1];
-                    baseUrl = script.src;
+                    if (len) {
+                        script = scriptEls[len - 1];
+                        baseUrl = script.src;
+                    } else {
+                        baseUrl = window.location.href;
+                    }
                 }
 
                 Boot.baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf('/') + 1);
